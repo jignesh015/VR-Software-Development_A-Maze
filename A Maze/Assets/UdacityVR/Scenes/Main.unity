@@ -2942,6 +2942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4259efea429e3458b997fe590ca4b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPoofPrefab: {fileID: 1000012050171414, guid: 5a4a0879fb37e45f1882f015f18db1bd,
+    type: 2}
 --- !u!64 &1970028577
 MeshCollider:
   m_ObjectHideFlags: 0
