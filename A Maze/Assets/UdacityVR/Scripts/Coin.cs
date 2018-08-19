@@ -11,7 +11,6 @@ public class Coin : MonoBehaviour {
 
 	void Update () {
 		// OPTIONAL-CHALLENGE: Animate the coin rotating
-		// TIP: You could use a method from the Transform class
 		transform.Rotate(0.0f, 100*Time.deltaTime, 0.0f, Space.Self);
 	}
 
@@ -26,8 +25,8 @@ public class Coin : MonoBehaviour {
 		Debug.Log ("'Coin.OnCoinClicked()' was called");
 
 		// TODO: Display the poof effect and remove the coin from the scene
-		Instantiate(coinPoofPrefab, transform.position,Quaternion.Euler(-90,0,0));
+		Instantiate(coinPoofPrefab, transform.position,Quaternion.Euler(-90,0,0)); // Instantiates CoinPoof Prefab
 
-		Destroy(gameObject,0.2f);
+		Destroy(gameObject,0.2f); //Destroys Coin
 	}
 }
