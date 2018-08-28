@@ -8,6 +8,10 @@ public class OpenChest : MonoBehaviour {
 
 	public Animator openChest;
 
+	public AudioSource chestAudioSource;
+
+	public AudioClip chestAudioClip;
+
 	// Use this for initialization
 	void Start () {
 		openChest.StartPlayback ();
@@ -20,5 +24,12 @@ public class OpenChest : MonoBehaviour {
 			openChest.StopPlayback ();
 		}
 	}
+
+	public void playChestAudio(){
+		Debug.Log ("Play Audio");
+		chestAudioSource.clip = chestAudioClip;
+		chestAudioSource.PlayDelayed (1);
+	}
+
 
 }

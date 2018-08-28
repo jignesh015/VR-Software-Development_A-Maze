@@ -15,6 +15,8 @@ public class Door : MonoBehaviour {
 	// Declare an AudioSource named 'audioSource' and get a reference to the audio source in Start()
 	public AudioSource audioSource;
 
+	public OpenChest chestObject;
+
 
 	// TODO: Create variables to track the gameplay states
 	private bool locked = true;
@@ -84,6 +86,7 @@ public class Door : MonoBehaviour {
 			opening = true;
 			audioSource.clip = doorOpeningClip;
 			audioSource.Play ();
+			chestObject.playChestAudio ();
 		} else {
 			audioSource.clip = doorLockedClip;
 			audioSource.Play ();
