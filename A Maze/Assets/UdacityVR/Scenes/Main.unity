@@ -21563,6 +21563,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1803481093}
+  - component: {fileID: 1803481094}
+  - component: {fileID: 1803481095}
   m_Layer: 0
   m_Name: Chest_Top
   m_TagString: Untagged
@@ -21577,14 +21579,44 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1803481092}
-  m_LocalRotation: {x: -0.00000031337947, y: 0.7071068, z: 0.7071067, w: 0.0000002515623}
+  m_LocalRotation: {x: -0.00000019861236, y: -0.7071068, z: -0.7071068, w: 0.00000019861236}
   m_LocalPosition: {x: -0, y: 0.01, z: 0}
   m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
   m_Children:
   - {fileID: 551924907}
   m_Father: {fileID: 1594110929}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -179.99998}
+--- !u!114 &1803481094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1803481092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea5721099529644dbb6f525d9904987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftDoorCheck: {fileID: 666523517}
+  openChest: {fileID: 1803481095}
+--- !u!95 &1803481095
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1803481092}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad0abf01c86f12345b7fc996c9937de1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1812431975 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010383912652, guid: 749ea01a62a9947538f52a6ddfad54d0,
