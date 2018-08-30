@@ -17,6 +17,14 @@ The included starter project represents a new Unity project where the following 
 - Colliders have been added to the `Coin`, `Key`, `Left_Door`, `Right_Door`, and `The_Temple` game objects, and to the `Maze` game object's child game objects.
 
 
+### Target Deployment Platform
+Android
+
+
+### Opening scene
+Main.unity
+
+
 ### Related Repositories
 - [VR Software Development - Creating Scripts](https://github.com/udacity/VR-Software-Development_Creating-Scripts/releases)
 - [VR Software Development - Controlling Objects Using Code](https://github.com/udacity/VR-Software-Development_Controlling-Objects-Using-Code/releases)
