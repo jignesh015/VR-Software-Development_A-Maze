@@ -17,6 +17,8 @@ public class Door : MonoBehaviour {
 
 	public OpenChest chestObject;
 
+	public ClosedDoor closedDoor;
+
 
 	// TODO: Create variables to track the gameplay states
 	private bool locked = true;
@@ -38,7 +40,6 @@ public class Door : MonoBehaviour {
 	// Declare a float named 'rotationTime' to set the Quaternion.Slerp() interpolation speed and initialize it to for example '10f'
 	private float rotationTime = 10f;
 
-
 	void Start () {
 		// TODO: Get a reference to the audio source
 		// Use GetComponent<>() to get a reference to the AudioSource component and assign it to the 'audioSource'
@@ -53,6 +54,7 @@ public class Door : MonoBehaviour {
 		rightDoorStartRotation = rightDoor.transform.rotation;
 		// Use 'rightDoorStartRotation' and Quaternion.Euler() to set the end rotation of the 'Right_Door' game object and assign it to 'rightDoorEndRotation'
 		rightDoorEndRotation = rightDoorStartRotation * Quaternion.Euler(0,0,-90);
+
 	}
 
 
@@ -67,6 +69,12 @@ public class Door : MonoBehaviour {
 			rightDoor.transform.rotation = Quaternion.Slerp (rightDoorStartRotation, rightDoorEndRotation, timer);
 			timer = timer + Time.deltaTime;
 		}
+
+//		if (closedDoorFlag) {
+//			
+//			closedDoorFlag = false;
+//			Debug.Log ("Flag" + closedDoorFlag);
+//		}
 	}
 
 
@@ -77,6 +85,7 @@ public class Door : MonoBehaviour {
 
 		// Prints to the console when the method is called
 		Debug.Log ("'Door.OnDoorClicked()' was called");
+
 
 		// TODO: If the door is unlocked, start animating the door rotating open and play a sound to indicate the door is opening
 		// Use 'locked' to check if the door is locked and ...
@@ -90,17 +99,10 @@ public class Door : MonoBehaviour {
 		} else {
 			audioSource.clip = doorLockedClip;
 			audioSource.Play ();
+			closedDoor.closedDoorClicked ();
 		}
-
-		// OPTIONAL-CHALLENGE: Prevent the door from being interacted with after it has started opening
-		// TIP: You could disable the Event Trigger component, or for an extra challenge, try disabling all the Collider components on all children
-
-		// OPTIONAL-CHALLENGE: Play a different sound if the door is locked
-		// TIP: You could get a reference to the 'Door_Locked' audio and play it without assigning it to the AudioSource component
-
-
-		//Debug.Log (audioSource.clip);
 	}
+
 
 
 	public void Unlock () {
@@ -109,6 +111,8 @@ public class Door : MonoBehaviour {
 
 		// Prints to the console when the method is called
 		Debug.Log ("'Door.Unlock()' was called");
+	
+
 
 		// TODO: Unlock the door 
 		// Unlock the door by changing the value of 'locked'
