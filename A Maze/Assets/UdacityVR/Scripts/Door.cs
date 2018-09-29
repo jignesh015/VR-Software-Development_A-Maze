@@ -118,4 +118,13 @@ public class Door : MonoBehaviour {
 		// Unlock the door by changing the value of 'locked'
 		locked = false;
 	}
+
+	public void onDoorGaze () {
+		StartCoroutine ("delayClick");
+	}
+
+	IEnumerator delayClick() {
+		yield return new WaitForSeconds (1.5f);
+		OnDoorClicked ();
+	}
 }

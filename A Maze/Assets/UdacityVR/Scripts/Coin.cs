@@ -29,4 +29,13 @@ public class Coin : MonoBehaviour {
 
 		Destroy(gameObject,0.2f); //Destroys Coin
 	}
+
+	public void onCoinGaze () {
+		StartCoroutine ("delayClick");
+	}
+
+	IEnumerator delayClick() {
+		yield return new WaitForSeconds (1.5f);
+		OnCoinClicked ();
+	}
 }

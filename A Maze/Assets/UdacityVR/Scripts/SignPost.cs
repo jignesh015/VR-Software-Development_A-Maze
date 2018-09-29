@@ -20,4 +20,13 @@ public class SignPost : MonoBehaviour {
 		Scene scene = SceneManager.GetActiveScene();
 		SceneManager.LoadScene (scene.name);
 	}
+
+	public void onSignPostGaze () {
+		StartCoroutine ("delayClick");
+	}
+
+	IEnumerator delayClick() {
+		yield return new WaitForSeconds (1.5f);
+		ResetScene ();
+	}
 }

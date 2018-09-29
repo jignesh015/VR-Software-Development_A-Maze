@@ -116,6 +116,12 @@ public class Waypoint : MonoBehaviour
 	public void Enter()
 	{
 		_state = _state == State.Idle ? State.Focused : _state;
+		StartCoroutine ("delayClick");
+	}
+
+	IEnumerator delayClick() {
+		yield return new WaitForSeconds (1.5f);
+		Click ();
 	}
 
 

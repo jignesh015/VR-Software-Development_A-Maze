@@ -35,4 +35,13 @@ public class Key : MonoBehaviour {
 
 		Destroy(gameObject,0.3f); // Destroys Key
 	}
+
+	public void onKeyGaze () {
+		StartCoroutine ("delayClick");
+	}
+
+	IEnumerator delayClick() {
+		yield return new WaitForSeconds (1.5f);
+		OnKeyClicked ();
+	}
 }
