@@ -51,6 +51,8 @@ public class Waypoint : MonoBehaviour
 	[Header("Hide Distance")]
 	public float threshold						= 0.125f;
 
+	private float enterTime;
+	private bool pointerFlag = false;
 
 
 	void Awake()
@@ -110,24 +112,28 @@ public class Waypoint : MonoBehaviour
 		gameObject.transform.localScale 									= Vector3.one * _scale;
 
 		_animated_lerp														= Mathf.Abs(Mathf.Cos(Time.time * scale_animation));
+
+		if (pointerFlag) {
+			if ((Time.time - enterTime) > 1.5f) {
+				Click ();
+				pointerFlag = false;
+			}
+		}
 	}
 
 
 	public void Enter()
 	{
 		_state = _state == State.Idle ? State.Focused : _state;
-		StartCoroutine ("delayClick");
-	}
-
-	IEnumerator delayClick() {
-		yield return new WaitForSeconds (1.5f);
-		Click ();
+		pointerFlag = true;
+		enterTime = Time.time;
 	}
 
 
 	public void Exit()
 	{
 		_state = State.Idle;
+		pointerFlag = false;
 	}
 
 

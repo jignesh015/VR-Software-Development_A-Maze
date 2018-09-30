@@ -40,6 +40,9 @@ public class Door : MonoBehaviour {
 	// Declare a float named 'rotationTime' to set the Quaternion.Slerp() interpolation speed and initialize it to for example '10f'
 	private float rotationTime = 10f;
 
+	private float enterTime;
+	private bool pointerFlag = false;
+
 	void Start () {
 		// TODO: Get a reference to the audio source
 		// Use GetComponent<>() to get a reference to the AudioSource component and assign it to the 'audioSource'
@@ -70,11 +73,12 @@ public class Door : MonoBehaviour {
 			timer = timer + Time.deltaTime;
 		}
 
-//		if (closedDoorFlag) {
-//			
-//			closedDoorFlag = false;
-//			Debug.Log ("Flag" + closedDoorFlag);
-//		}
+		if (pointerFlag) {
+			if ((Time.time - enterTime) > 1.5f) {
+				OnDoorClicked ();
+				pointerFlag = false;
+			}
+		}
 	}
 
 
@@ -120,11 +124,12 @@ public class Door : MonoBehaviour {
 	}
 
 	public void onDoorGaze () {
-		StartCoroutine ("delayClick");
+		pointerFlag = true;
+		enterTime = Time.time;
 	}
 
-	IEnumerator delayClick() {
-		yield return new WaitForSeconds (1.5f);
-		OnDoorClicked ();
-	}
+	public void onDoorGazeOut () {
+		pointerFlag = false;
+	} 
+		
 }

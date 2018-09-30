@@ -8,10 +8,20 @@ public class Coin : MonoBehaviour {
 	// Declare a GameObject named 'coinPoofPrefab' and assign the 'CoinPoof' prefab to the field in Unity
 	public GameObject coinPoofPrefab;
 
+	private float enterTime;
+	private bool pointerFlag = false;
+
 
 	void Update () {
 		// OPTIONAL-CHALLENGE: Animate the coin rotating
 		transform.Rotate(0.0f, 100*Time.deltaTime, 0.0f, Space.Self);
+
+		if (pointerFlag) {
+			if ((Time.time - enterTime) > 1.5f) {
+				OnCoinClicked ();
+				pointerFlag = false;
+			}
+		}
 	}
 
 
@@ -31,11 +41,12 @@ public class Coin : MonoBehaviour {
 	}
 
 	public void onCoinGaze () {
-		StartCoroutine ("delayClick");
+		pointerFlag = true;
+		enterTime = Time.time;
 	}
 
-	IEnumerator delayClick() {
-		yield return new WaitForSeconds (1.5f);
-		OnCoinClicked ();
-	}
+	public void onCoinGazeOut () {
+		pointerFlag = false;
+	} 
+		
 }

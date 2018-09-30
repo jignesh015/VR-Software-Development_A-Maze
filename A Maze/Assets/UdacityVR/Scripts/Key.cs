@@ -10,11 +10,19 @@ public class Key : MonoBehaviour {
 
 	public GameObject keyPoofPrefab;
 	public Door door;
-
+	private float enterTime;
+	private bool pointerFlag = false;
 
 	void Update () {
 		// OPTIONAL-CHALLENGE: Animate the key rotating
 		transform.Rotate(0.0f, 0.0f, 100*Time.deltaTime, Space.Self);
+
+		if (pointerFlag) {
+			if ((Time.time - enterTime) > 1.5f) {
+				OnKeyClicked ();
+				pointerFlag = false;
+			}
+		}
 	}
 
 
@@ -37,11 +45,12 @@ public class Key : MonoBehaviour {
 	}
 
 	public void onKeyGaze () {
-		StartCoroutine ("delayClick");
+		pointerFlag = true;
+		enterTime = Time.time;
 	}
 
-	IEnumerator delayClick() {
-		yield return new WaitForSeconds (1.5f);
-		OnKeyClicked ();
-	}
+	public void onKeyGazeOut () {
+		pointerFlag = false;
+	} 
+		
 }

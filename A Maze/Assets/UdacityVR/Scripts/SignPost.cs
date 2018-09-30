@@ -6,6 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class SignPost : MonoBehaviour {
 
+	private float enterTime;
+	private bool pointerFlag = false;
+
+	void Update () {
+		if (pointerFlag) {
+			if ((Time.time - enterTime) > 1.5f) {
+				ResetScene ();
+				pointerFlag = false;
+			}
+		}
+	}
+
 	public void ResetScene () {
 		/// Called when the 'SignPost' game object is clicked
 		/// - Reloads the scene
@@ -22,11 +34,11 @@ public class SignPost : MonoBehaviour {
 	}
 
 	public void onSignPostGaze () {
-		StartCoroutine ("delayClick");
+		pointerFlag = true;
+		enterTime = Time.time;
 	}
 
-	IEnumerator delayClick() {
-		yield return new WaitForSeconds (1.5f);
-		ResetScene ();
-	}
+	public void onSignPostGazeOut () {
+		pointerFlag = false;
+	} 
 }
